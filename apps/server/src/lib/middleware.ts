@@ -1,4 +1,4 @@
-import { context as otelContext, trace } from "@opentelemetry/api";
+import { context as otelContext, SpanStatusCode, trace } from "@opentelemetry/api";
 import type { Next } from "hono";
 import { createMiddleware } from "hono/factory";
 import { UAParser } from "ua-parser-js";
@@ -175,7 +175,13 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 
 		if (span && traceId) {
 			c.res.headers.set(headerName, traceId);
-			span.addEvent("wideEvent", event);
+			// span.addEvent("wideEvent", event);
 			span.setAttributes(event);
+
+			if (isError) {
+				span.setStatus({ code: SpanStatusCode.ERROR, message: `HTTP ${status_code}` });
+			} else {
+				span.setStatus({ code: SpanStatusCode.OK });
+			}
 		}
 	});

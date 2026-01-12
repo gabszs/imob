@@ -23,7 +23,6 @@ utilityRoutes.openapi(
 		},
 	}),
 	async (c: AppContext) => {
-		await c.env.D1.prepare("SELECT 1").first();
 		return c.json({
 			status: "ok",
 			timestamp: new Date().toISOString(),

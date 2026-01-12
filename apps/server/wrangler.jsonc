@@ -11,8 +11,8 @@
     "ENVIRONMENT": "production",
     "CORS_ORIGIN": "https://jsonfy.dev,https://jsonfy.io,https://new.jsonfy.io,https://old.jsonfy.io",
     "BETTER_AUTH_URL": "https://api.jsonfy.io/api/auth",
-    "commitHash": "dfe51df9236425a703e5cc807a31aad5bf487cf3",
-    "commitBranch": "feat/imodreams",
+    "commitHash": "af46fd88538e5703cd34b2a924a3527592a13428",
+    "commitBranch": "master",
     "deploymentUser": "GabrielDeCarvalho",
     "deploymentEmail": "gnorberc@emeal.nttdata.com",
     "deploymentTrigger": "manual"

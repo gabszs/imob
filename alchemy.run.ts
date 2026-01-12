@@ -39,6 +39,7 @@ async function getGitMetadata() {
 }
 
 const commitInfo = await getGitMetadata();
+console.log("Commit Info:", commitInfo);
 
 async function bumpPatchVersion(packageJsonPath: string): Promise<string> {
 	const absolutePath = resolve(packageJsonPath);
