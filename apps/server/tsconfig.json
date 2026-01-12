@@ -1,0 +1,39 @@
+{
+	"compilerOptions": {
+		/* Base Options: */
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"target": "es2022",
+		"verbatimModuleSyntax": false,
+		"allowJs": true,
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+		/* Decorators */
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		/* Strictness */
+		"noImplicitAny": false,
+		"noImplicitThis": true,
+		"strictNullChecks": false,
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		/* If NOT transpiling with TypeScript: */
+		"moduleResolution": "Bundler",
+		"module": "es2022",
+		"lib": ["es2022", "WebWorker"],
+		"types": [
+			"./worker-configuration.d.ts",
+			// "@types/node",
+			"@types/service-worker-mock",
+			"@cloudflare/vitest-pool-workers"
+		],
+		/* For project references */
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": true,
+		"outDir": "./dist"
+	},
+	"exclude": ["node_modules", "dist", "tests"],
+	"include": ["src/**/*.ts", "src", "worker-configuration.d.ts", "src/cloaker/src/db/domains.ts"]
+}

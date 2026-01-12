@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="claude">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>traki</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script type="text/javascript">
+      ((c,l,a,r,i,t,y)=> {
+          c[a]=c[a]||(()=> {(c[a].q=c[a].q||[]).push(arguments)});
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ufhd6zrmy7");
+
+      // Função auxiliar para extrair valores de cookies
+      function getCookieValue(name) {
+        const cookies = document.cookie ? document.cookie.split('; ') : [];
+        for (let i = 0; i < cookies.length; i++) {
+          const parts = cookies[i].split('=');
+          if (parts[0] === name) {
+            return decodeURIComponent(parts.slice(1).join('=') || '');
+          }
+        }
+        return null;
+      }
+
+      function extractId(value) {
+        if (!value) return null;
+        const delimiter = value.includes('^') ? '^' : '|';
+        return value.split(delimiter)[0];
+      }
+
+      // Debug: Pegar IDs do Clarity
+      window.addEventListener('load', () => {
+        const clarityProjectId = 'ufhd6zrmy7';
+
+        if (typeof clarity === 'function') {
+          console.log('✅ Clarity carregado e pronto');
+          console.log('   Project ID:', clarityProjectId);
+
+          // Método 1: Usando API de metadata (recomendado)
+          clarity("metadata", (metadata) => {
+            if (metadata && metadata.userId && metadata.sessionId) {
+              console.log('🔍 [Clarity Debug - Via Metadata API]');
+              console.log('  User ID:', metadata.userId);
+              console.log('  Session ID:', metadata.sessionId);
+              console.log('  Project ID:', metadata.projectId);
+              console.log('  Dashboard URL:', `https://clarity.microsoft.com/projects/view/${metadata.projectId}/sessions/${metadata.sessionId}`);
+
+              window.clarityUserId = metadata.userId;
+              window.claritySessionId = metadata.sessionId;
+            } else {
+              console.log('❌ Erro ao obter metadata do Clarity');
+            }
+          });
+
+          // Método 2: Fallback via cookies
+          setTimeout(() => {
+            const clck = getCookieValue('_clck');
+            const clsk = getCookieValue('_clsk');
+
+            if (clck && clsk) {
+              const userId = extractId(clck);
+              const sessionId = extractId(clsk);
+              console.log('🔍 [Clarity Debug - Via Cookies]');
+              console.log('  User ID:', userId);
+              console.log('  Session ID (aproximado):', sessionId);
+              console.log('  Dashboard URL:', `https://clarity.microsoft.com/projects/view/${clarityProjectId}/sessions/${sessionId}`);
+            } else {
+              console.log('❌ Cookies do Clarity não encontrados ainda. Tente após interação na página.');
+            }
+
+            // Clarity armazena algumas infos no window
+            if (window.clarity && window.clarity.s) {
+              console.log('🔍 [Clarity Debug - Via Clarity Object]');
+              console.log('  Clarity State:', window.clarity.s);
+            }
+
+            if (!window.claritySessionId || !window.clarityUserId) {
+              console.log('⏳ Aguardando Clarity inicializar...');
+              console.log('   Tente novamente em alguns segundos ou interaja com a página');
+            }
+          }, 5000); // Aumentado para 5s para dar mais tempo de inicialização
+        } else {
+          console.warn('❌ Clarity ainda não está disponível');
+        }
+      });
+    </script>
+    <!-- <script
+        src="https://s3.traki.io/traki.js"
+        api_key="tk_MHlH5xrA_01k9931vS6haZ68XT42CceCCTj"
+        campaign_id="7a9c06ff-8c7f-4ef2-8b17-35b22a1a4a11"
+        base_url="http://localhost:8787"
+        tty_level="debug">
+    </script> -->
+    <!-- <script
+        src="https://s3.traki.io/traki.js"
+        api_key="tk_MhPRG01K_01K9gT5WSR0dJZhyNQJZ0BRCmw"
+        campaign_id="15d2d52b-7bc3-4aa5-b5f8-2aa61d8ff659"
+        tty_level="debug">
+    </script> -->
+    <!-- <script
+        src="/home/gabriel/Documents/tracker/scripts/dist/traki.js"
+        api_key="tk_MhPRG01K_01K9gT5WSR0dJZhyNQJZ0BRCmw"
+        campaign_id="6dde2058-04ee-4281-9f85-0b18b7ca12e2"
+        tty_level="debug">
+    </script> -->
+  </body>
+</html>

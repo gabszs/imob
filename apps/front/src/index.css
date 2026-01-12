@@ -1,0 +1,668 @@
+/* Claude-style fonts:
+   - Tiempos Text (serif) → Using: EB Garamond (free alternative)
+   - Styrene (sans-serif) → Using: Inter (free alternative)
+*/
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,wght@0,300..900;1,300..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* =============================================================================
+   THEME - Inspired by Open WebUI & Claude
+   ============================================================================= */
+
+@theme inline {
+	/* Modern Color Scale - More pleasant and less harsh */
+	--color-gray-50: #fafafa;
+	--color-gray-100: #f4f4f5;
+	--color-gray-200: #e4e4e7;
+	--color-gray-300: #d4d4d8;
+	--color-gray-400: #a1a1aa;
+	--color-gray-500: #71717a;
+	--color-gray-600: #52525b;
+	--color-gray-700: #3f3f46;
+	--color-gray-800: #27272a;
+	--color-gray-850: #1f1f23;
+	--color-gray-900: #18181b;
+	--color-gray-950: #09090b;
+
+	/* Sidebar Spacing */
+	--sidebar-width: 260px;
+	--sidebar-padding-x: 0.5rem;
+	--sidebar-padding-top: 0.5rem;
+	--sidebar-padding-bottom: 0.375rem;
+	--sidebar-item-padding-x: 0.625rem;
+	--sidebar-item-padding-y: 0.5rem;
+
+	/* Border Radius */
+	--radius-lg: 1rem; /* rounded-2xl */
+	--radius-md: 0.75rem; /* rounded-xl */
+	--radius-sm: 0.5rem; /* rounded-lg */
+}
+
+:root {
+	/* Font Variables */
+	--font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+	--font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--font-ui-serif: "EB Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-claude-response: var(--font-ui-serif);
+	--font-user-message: var(--font-ui);
+
+	/* Always White/Black */
+	--always-white: 0 0% 100%;
+	--always-black: 0 0% 0%;
+
+	--radius: 0.5rem;
+}
+
+/* Modern Light Theme (Default) - Warm & Comfortable */
+[data-theme="claude"],
+[data-theme="claude"][data-mode="light"],
+.light {
+	/* Accent Colors - Vibrant and modern */
+	--accent-brand: 262 83% 58%;
+	--accent-main-000: 262 70% 50%;
+	--accent-main-100: 262 83% 58%;
+	--accent-main-200: 262 90% 65%;
+	--accent-main-900: 0 0% 0%;
+
+	--accent-pro-000: 221 83% 53%;
+	--accent-pro-100: 221 83% 53%;
+	--accent-pro-200: 221 90% 60%;
+	--accent-pro-900: 221 100% 96%;
+
+	--accent-secondary-000: 142 76% 36%;
+	--accent-secondary-100: 142 71% 45%;
+	--accent-secondary-200: 142 69% 58%;
+	--accent-secondary-900: 142 76% 95%;
+
+	/* Background Colors - Warm cream/beige tones */
+	--bg-000: 45 20% 97%; /* Soft cream white */
+	--bg-100: 40 15% 95%; /* Warm off-white */
+	--bg-200: 40 12% 93%; /* Light beige */
+	--bg-300: 40 10% 88%; /* Cream */
+	--bg-400: 40 8% 80%; /* Warm gray-beige */
+	--bg-500: 40 5% 65%; /* Mid beige */
+
+	/* Sidebar specific backgrounds - Same warm tones */
+	--sidebar-bg: 40 15% 95%;
+	--sidebar-hover: 40 12% 93%;
+	--sidebar-active: 40 10% 88%;
+
+	/* Border Colors - More visible borders for better contrast */
+	--border-100: 40 8% 75%;
+	--border-200: 40 8% 70%;
+	--border-300: 40 8% 65%;
+	--border-400: 40 8% 60%;
+
+	/* Status Colors - Bright and clear */
+	--danger-000: 0 84% 60%;
+	--danger-100: 0 72% 51%;
+	--danger-200: 0 72% 51%;
+	--danger-900: 0 86% 97%;
+
+	--success-000: 142 76% 36%;
+	--success-100: 142 71% 45%;
+	--success-200: 142 69% 58%;
+	--success-900: 142 76% 95%;
+
+	--warning-000: 32 95% 44%;
+	--warning-100: 25 95% 53%;
+	--warning-200: 25 95% 53%;
+	--warning-900: 38 92% 95%;
+
+	/* Text Colors - Warm dark tones */
+	--text-000: 30 5% 12%; /* Warm almost black */
+	--text-100: 30 5% 12%;
+	--text-200: 30 4% 26%; /* Warm dark gray */
+	--text-300: 30 3% 35%; /* Warm mid-dark */
+	--text-400: 30 2% 48%; /* Warm mid */
+	--text-500: 30 2% 60%; /* Warm light-mid */
+
+	/* On-Color (text on colored backgrounds) */
+	--oncolor-100: 0 0% 100%;
+	--oncolor-200: 40 15% 95%;
+	--oncolor-300: 45 20% 97%;
+
+	/* Pictogram Colors */
+	--pictogram-100: 30 2% 48%;
+	--pictogram-200: 30 3% 35%;
+	--pictogram-300: 30 4% 26%;
+	--pictogram-400: 30 5% 12%;
+
+	/* Tailwind compatibility - Warm Light */
+	--background: 45 20% 97%; /* Main background: soft cream */
+	--foreground: 30 5% 12%;
+	--card: 40 15% 95%; /* Cards slightly darker */
+	--card-foreground: 30 5% 12%;
+	--popover: 40 15% 95%;
+	--popover-foreground: 30 5% 12%;
+	--primary: 262 83% 58%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 40 12% 93%;
+	--secondary-foreground: 30 5% 12%;
+	--muted: 40 12% 93%;
+	--muted-foreground: 30 2% 48%;
+	--accent: 40 12% 93%;
+	--accent-foreground: 30 5% 12%;
+	--destructive: 0 72% 51%;
+	--destructive-foreground: 0 0% 100%;
+	--border: 40 8% 60%; /* More visible border */
+	--input: 40 10% 88%;
+	--ring: 262 83% 58%;
+}
+
+/* Modern Dark Theme - Contrast between sidebar and main */
+[data-theme="claude"][data-mode="dark"],
+.dark {
+	/* Accent Colors - Vibrant but eye-friendly */
+	--accent-brand: 262 80% 67%;
+	--accent-main-000: 262 70% 60%;
+	--accent-main-100: 262 80% 67%;
+	--accent-main-200: 262 85% 72%;
+	--accent-main-900: 0 0% 0%;
+
+	--accent-pro-000: 221 83% 68%;
+	--accent-pro-100: 221 83% 68%;
+	--accent-pro-200: 221 90% 75%;
+	--accent-pro-900: 221 70% 25%;
+
+	--accent-secondary-000: 142 69% 58%;
+	--accent-secondary-100: 142 71% 65%;
+	--accent-secondary-200: 142 76% 70%;
+	--accent-secondary-900: 142 76% 25%;
+
+	/* Background Colors - Lighter gray for main content */
+	--bg-000: 0 0% 14%; /* Main content: lighter gray */
+	--bg-100: 0 0% 16%; /* Slightly lighter */
+	--bg-200: 0 0% 18%; /* Cards/elevated surfaces */
+	--bg-300: 0 0% 22%; /* Hover states */
+	--bg-400: 0 0% 28%; /* Active states */
+	--bg-500: 0 0% 35%; /* Disabled states */
+
+	/* Sidebar specific - Dark background for contrast */
+	--sidebar-bg: 240 8% 8%; /* Dark sidebar */
+	--sidebar-hover: 240 6% 12%; /* Hover slightly lighter */
+	--sidebar-active: 240 5% 16%; /* Active item highlighted */
+
+	/* Border Colors - Prominent for contrast */
+	--border-100: 0 0% 22%; /* Visible borders */
+	--border-200: 0 0% 26%; /* More prominent */
+	--border-300: 0 0% 30%; /* Strong borders */
+	--border-400: 0 0% 35%; /* Very visible */
+
+	/* Status Colors - Vibrant and clear */
+	--danger-000: 0 84% 70%;
+	--danger-100: 0 72% 65%;
+	--danger-200: 0 72% 65%;
+	--danger-900: 0 65% 25%;
+
+	--success-000: 142 69% 58%;
+	--success-100: 142 71% 65%;
+	--success-200: 142 76% 70%;
+	--success-900: 142 76% 25%;
+
+	--warning-000: 25 95% 63%;
+	--warning-100: 32 95% 58%;
+	--warning-200: 32 95% 58%;
+	--warning-900: 32 90% 25%;
+
+	/* Text Colors - High contrast for readability */
+	--text-000: 0 0% 98%; /* Almost white */
+	--text-100: 0 0% 92%; /* Very light */
+	--text-200: 0 0% 85%; /* Light gray */
+	--text-300: 0 0% 70%; /* Mid-light */
+	--text-400: 0 0% 55%; /* Mid */
+	--text-500: 0 0% 40%; /* Muted */
+
+	/* On-Color */
+	--oncolor-100: 0 0% 100%;
+	--oncolor-200: 0 0% 98%;
+	--oncolor-300: 0 0% 96%;
+
+	/* Pictogram Colors */
+	--pictogram-100: 0 0% 55%;
+	--pictogram-200: 0 0% 40%;
+	--pictogram-300: 0 0% 25%;
+	--pictogram-400: 0 0% 10%;
+
+	/* Tailwind compatibility - Gray main, dark sidebar */
+	--background: 0 0% 14%; /* Main content: lighter gray */
+	--foreground: 0 0% 98%;
+	--card: 0 0% 16%; /* Cards slightly elevated */
+	--card-foreground: 0 0% 98%;
+	--popover: 0 0% 16%;
+	--popover-foreground: 0 0% 98%;
+	--primary: 262 80% 67%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 0 0% 18%;
+	--secondary-foreground: 0 0% 98%;
+	--muted: 0 0% 18%;
+	--muted-foreground: 0 0% 70%;
+	--accent: 0 0% 18%;
+	--accent-foreground: 0 0% 98%;
+	--destructive: 0 72% 65%;
+	--destructive-foreground: 0 0% 100%;
+	--border: 0 0% 35%; /* Prominent borders for contrast */
+	--input: 0 0% 18%;
+	--ring: 262 80% 67%;
+}
+
+/* Auto Dark Mode based on system preference */
+@media (prefers-color-scheme: dark) {
+	[data-theme="claude"]:not([data-mode="light"]) {
+		/* Background Colors - Gray main content */
+		--bg-000: 0 0% 14%;
+		--bg-100: 0 0% 16%;
+		--bg-200: 0 0% 18%;
+		--bg-300: 0 0% 22%;
+		--bg-400: 0 0% 28%;
+		--bg-500: 0 0% 35%;
+
+		/* Sidebar specific - Dark for contrast */
+		--sidebar-bg: 240 8% 8%;
+		--sidebar-hover: 240 6% 12%;
+		--sidebar-active: 240 5% 16%;
+
+		/* Border Colors - Prominent */
+		--border-100: 0 0% 22%;
+		--border-200: 0 0% 26%;
+		--border-300: 0 0% 30%;
+		--border-400: 0 0% 35%;
+
+		/* Text Colors - High contrast */
+		--text-000: 0 0% 98%;
+		--text-100: 0 0% 92%;
+		--text-200: 0 0% 85%;
+		--text-300: 0 0% 70%;
+		--text-400: 0 0% 55%;
+		--text-500: 0 0% 40%;
+
+		/* Tailwind compatibility */
+		--background: 0 0% 14%;
+		--foreground: 0 0% 98%;
+		--card: 0 0% 16%;
+		--card-foreground: 0 0% 98%;
+		--popover: 0 0% 16%;
+		--popover-foreground: 0 0% 98%;
+		--primary: 262 80% 67%;
+		--primary-foreground: 0 0% 100%;
+		--secondary: 0 0% 18%;
+		--secondary-foreground: 0 0% 98%;
+		--muted: 0 0% 18%;
+		--muted-foreground: 0 0% 70%;
+		--accent: 0 0% 18%;
+		--accent-foreground: 0 0% 98%;
+		--border: 0 0% 26%;
+		--input: 0 0% 18%;
+		--ring: 262 80% 67%;
+
+		/* Accent colors */
+		--accent-brand: 262 80% 67%;
+		--accent-main-000: 262 70% 60%;
+		--accent-main-100: 262 80% 67%;
+		--accent-main-200: 262 85% 72%;
+		--accent-main-900: 0 0% 0%;
+		--accent-pro-000: 221 83% 68%;
+		--accent-pro-100: 221 83% 68%;
+		--accent-pro-200: 221 90% 75%;
+		--accent-pro-900: 221 70% 25%;
+		--accent-secondary-000: 142 69% 58%;
+		--accent-secondary-100: 142 71% 65%;
+		--accent-secondary-200: 142 76% 70%;
+		--accent-secondary-900: 142 76% 25%;
+		--danger-000: 0 84% 70%;
+		--danger-100: 0 72% 65%;
+		--danger-200: 0 72% 65%;
+		--danger-900: 0 65% 25%;
+		--oncolor-100: 0 0% 100%;
+		--oncolor-200: 0 0% 98%;
+		--oncolor-300: 0 0% 96%;
+		--pictogram-100: 0 0% 55%;
+		--pictogram-200: 0 0% 40%;
+		--pictogram-300: 0 0% 25%;
+		--pictogram-400: 0 0% 10%;
+		--success-000: 142 69% 58%;
+		--success-100: 142 71% 65%;
+		--success-200: 142 76% 70%;
+		--success-900: 142 76% 25%;
+		--warning-000: 25 95% 63%;
+		--warning-100: 32 95% 58%;
+		--warning-200: 32 95% 58%;
+		--warning-900: 32 90% 25%;
+		--destructive: 0 72% 65%;
+		--destructive-foreground: 0 0% 100%;
+	}
+}
+
+/* =============================================================================
+   TYPOGRAPHY CLASSES - Claude Style
+   ============================================================================= */
+
+.font-base {
+	font-family: var(--font-ui);
+	font-size: 0.875rem;
+	font-weight: 430;
+	line-height: 1.4;
+}
+
+.font-base-bold {
+	font-family: var(--font-ui);
+	font-size: 0.875rem;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.font-display {
+	font-family: var(--font-ui-serif);
+	font-size: 2.375rem;
+	font-weight: 330;
+	line-height: 1.2;
+	font-variation-settings: "opsz" 48;
+}
+
+.font-heading {
+	font-family: var(--font-ui-serif);
+	font-size: 1.5rem;
+	font-weight: 500;
+	line-height: 1.3;
+	font-variation-settings: "opsz" 24;
+}
+
+.font-title {
+	font-family: var(--font-ui-serif);
+	font-size: 1.75rem;
+	font-weight: 500;
+	line-height: 1.3;
+	font-variation-settings: "opsz" 28;
+}
+
+.font-large {
+	font-family: var(--font-ui);
+	font-size: 1rem;
+	font-weight: 430;
+	line-height: 1.4;
+}
+
+.font-large-bold {
+	font-family: var(--font-ui);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.font-small {
+	font-family: var(--font-ui);
+	font-size: 0.75rem;
+	font-weight: 430;
+	line-height: 1.4;
+}
+
+.font-small-bold {
+	font-family: var(--font-ui);
+	font-size: 0.75rem;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.font-xl {
+	font-family: var(--font-ui);
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1.4;
+	font-variation-settings: "opsz" 20;
+}
+
+.font-xl-bold {
+	font-family: var(--font-ui);
+	font-size: 1.25rem;
+	font-weight: 600;
+	line-height: 1.4;
+	font-variation-settings: "opsz" 20;
+}
+
+/* Dark Mode Font Weight Adjustments */
+[data-theme="claude"][data-mode="dark"] .font-base {
+	font-weight: 400;
+}
+[data-theme="claude"][data-mode="dark"] .font-base-bold {
+	font-weight: 460;
+}
+[data-theme="claude"][data-mode="dark"] .font-display {
+	font-weight: 290;
+}
+[data-theme="claude"][data-mode="dark"] .font-heading {
+	font-weight: 460;
+}
+[data-theme="claude"][data-mode="dark"] .font-large {
+	font-weight: 400;
+}
+[data-theme="claude"][data-mode="dark"] .font-large-bold {
+	font-weight: 560;
+}
+[data-theme="claude"][data-mode="dark"] .font-small {
+	font-weight: 400;
+}
+[data-theme="claude"][data-mode="dark"] .font-small-bold {
+	font-weight: 560;
+}
+[data-theme="claude"][data-mode="dark"] .font-title {
+	font-weight: 460;
+}
+[data-theme="claude"][data-mode="dark"] .font-xl {
+	font-weight: 360;
+}
+[data-theme="claude"][data-mode="dark"] .font-xl-bold {
+	font-weight: 560;
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+@layer base {
+	* {
+		border-color: hsl(var(--border) / 0.3);
+	}
+
+	body {
+		background-color: hsl(var(--background));
+		color: hsl(var(--foreground));
+		font-family: var(--font-ui);
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
+
+	/* Scrollbar Styling */
+	::-webkit-scrollbar {
+		height: 0.45rem;
+		width: 0.45rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background-color: transparent;
+		border-radius: 9999px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: rgba(215, 215, 215, 0.6);
+		border-color: rgba(255, 255, 255, 1);
+		border-radius: 9999px;
+		border-width: 1px;
+	}
+
+	[data-theme="claude"][data-mode="dark"] ::-webkit-scrollbar-thumb {
+		background-color: rgba(67, 67, 67, 0.6);
+		border-color: rgba(0, 0, 0, 1);
+	}
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+.inline-link {
+	text-decoration-line: underline;
+	text-underline-offset: 3px;
+}
+
+.inline-link:not(:is(:hover, :focus)) {
+	text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
+}
+
+/* =============================================================================
+   SIDEBAR UTILITY CLASSES - Open WebUI Style
+   ============================================================================= */
+
+/* Sidebar container */
+.sidebar {
+	width: var(--sidebar-width);
+	background-color: hsl(var(--sidebar-bg));
+	padding-left: var(--sidebar-padding-x);
+	padding-right: var(--sidebar-padding-x);
+	padding-top: var(--sidebar-padding-top);
+	padding-bottom: var(--sidebar-padding-bottom);
+}
+
+/* Sidebar items */
+.sidebar-item {
+	padding-left: var(--sidebar-item-padding-x);
+	padding-right: var(--sidebar-item-padding-x);
+	padding-top: var(--sidebar-item-padding-y);
+	padding-bottom: var(--sidebar-item-padding-y);
+	border-radius: var(--radius-md);
+	transition: background-color 0.15s ease;
+}
+
+.sidebar-item:hover {
+	background-color: hsl(var(--sidebar-hover));
+}
+
+.sidebar-item.active,
+.sidebar-item[data-active="true"] {
+	background-color: hsl(var(--sidebar-active));
+}
+
+/* Sidebar button styling */
+.sidebar-button {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: var(--sidebar-item-padding-y) var(--sidebar-item-padding-x);
+	border-radius: var(--radius-md);
+	background: transparent;
+	border: none;
+	color: hsl(var(--text-000));
+	font-size: 0.875rem;
+	font-weight: 400;
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+
+.sidebar-button:hover {
+	background-color: hsl(var(--sidebar-hover));
+}
+
+.sidebar-button.active,
+.sidebar-button[data-active="true"] {
+	background-color: hsl(var(--sidebar-active));
+}
+
+/* Sidebar spacing utilities */
+.sidebar-gap {
+	gap: 0.5rem;
+}
+
+.sidebar-gap-lg {
+	gap: 0.75rem;
+}
+
+/* Ensure ALL main containers and components have solid backgrounds */
+main,
+[role="main"],
+.card,
+section,
+article,
+form,
+table,
+div[class*="container"],
+div[class*="wrapper"],
+div[class*="content"],
+div[class*="panel"],
+div[class*="list"],
+div[class*="grid"],
+nav:not(.sidebar):not(.sidebar *),
+header:not(.sidebar):not(.sidebar *) {
+	background-color: hsl(var(--background));
+}
+
+/* Cards and elevated surfaces */
+.card,
+[data-card] {
+	background-color: hsl(var(--card));
+}
+
+/* Input elements */
+input,
+textarea,
+select {
+	background-color: hsl(var(--input));
+}
+
+/* =============================================================================
+   MAPLIBRE STYLES
+   ============================================================================= */
+
+/* Hide the clear button from geocoder dropdown results */
+.maplibregl-ctrl-geocoder .suggestions button {
+	display: none !important;
+}
+
+/* Centralizar o geocoder no topo */
+.mapboxgl-ctrl-top-left,
+.maplibregl-ctrl-top-left {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	pointer-events: none;
+}
+
+.mapboxgl-ctrl-top-left .maplibregl-ctrl,
+.maplibregl-ctrl-top-left .maplibregl-ctrl {
+	pointer-events: auto;
+}
+
+.mapboxgl-ctrl-top-left .maplibregl-ctrl-geocoder,
+.maplibregl-ctrl-top-left .maplibregl-ctrl-geocoder {
+	max-width: 400px;
+	width: 100%;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =============================================================================
+   TOOLTIP STYLES - Solid background
+   ============================================================================= */
+
+/* Ensure tooltips have solid backgrounds */
+[role="tooltip"],
+.tooltip,
+[data-radix-popper-content-wrapper] {
+	opacity: 1 !important;
+}
+
+[role="tooltip"] {
+	background-color: hsl(var(--popover)) !important;
+	backdrop-filter: none !important;
+}
+
+/* Force solid background for Radix tooltip */
+[data-radix-popper-content-wrapper] > [role="tooltip"] {
+	background-color: hsl(var(--card)) !important;
+	border: 1px solid hsl(var(--border)) !important;
+}
+

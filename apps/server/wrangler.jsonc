@@ -1,0 +1,51 @@
+{
+  "name": "imob-prod-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-12-17",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "vars": {
+    "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT": "https://collector.gabrielcarvalho.dev/v1/traces",
+    "OTEL_SERVICE_NAME": "imob-backend-api",
+    "ENVIRONMENT": "production",
+    "CORS_ORIGIN": "https://jsonfy.dev,https://jsonfy.io,https://new.jsonfy.io,https://old.jsonfy.io",
+    "BETTER_AUTH_URL": "https://api.jsonfy.io/api/auth",
+    "commitHash": "dfe51df9236425a703e5cc807a31aad5bf487cf3",
+    "commitBranch": "feat/imodreams",
+    "deploymentUser": "GabrielDeCarvalho",
+    "deploymentEmail": "gnorberc@emeal.nttdata.com",
+    "deploymentTrigger": "manual"
+  },
+  "version_metadata": {
+    "binding": "VERSION_METADATA"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "786c08c2207749b59c7fe0986493afb7",
+      "preview_id": "786c08c2207749b59c7fe0986493afb7"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "imob-prod-private-bucket",
+      "preview_bucket_name": "imob-prod-private-bucket"
+    },
+    {
+      "binding": "S3",
+      "bucket_name": "imob-prod-public-bucket",
+      "preview_bucket_name": "imob-prod-public-bucket"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "D1",
+      "database_id": "99c916e4-d30c-49a1-9136-f7e616bb6843",
+      "database_name": "imob-prod-db",
+      "migrations_dir": "src/db/migrations",
+      "preview_database_id": "99c916e4-d30c-49a1-9136-f7e616bb6843"
+    }
+  ]
+}

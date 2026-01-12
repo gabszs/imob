@@ -1,0 +1,54 @@
+{
+	"name": "master-api",
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.9",
+		"@types/bun": "latest",
+		"alchemy": "0.83.0",
+		"dockerode": "^4.0.9",
+		"dotenv": "^17.2.3",
+		"tar-fs": "^3.1.1",
+		"turbo": "^2.6.3",
+		"simple-git": "^3.30.0"
+	},
+	"packageManager": "pnpm@10.15.0",
+	"private": true,
+	"scripts": {
+		"lint": "biome check --write .",
+		"scripts:web": "cd website && pnpm dev",
+		"lint:unsafe": "biome check --write --unsafe .",
+		"a:dev": "ALCHEMY_STAGE=dev alchemy dev --env-file .env.dev",
+		"server:run": "cd apps/server && pnpm dev",
+		"a:deploy": "ALCHEMY_STAGE=prod alchemy deploy --env-file .env.prod",
+		"a:destroy": "ALCHEMY_STAGE=prod alchemy destroy --env-file .env.prod",
+		"a:dev:destroy": "ALCHEMY_STAGE=dev alchemy destroy --env-file .env.dev",
+		"a:clean": "rm -rf .alchemy && turbo a:clean",
+		"vite:clean": "turbo -F web vite:clean",
+		"build": "turbo -F web build",
+		"build:web": "turbo -F web build",
+		"build:front": "turbo -F front build",
+		"typecheck": "turbo typecheck",
+		"dev:web": "turbo -F web dev",
+		"dev:front": "turbo -F front dev",
+		"dev:server": "turbo -F server dev",
+		"db:push": "turbo -F server db:push",
+		"db:studio": "turbo -F server db:studio",
+		"db:generate": "turbo -F server db:generate",
+		"db:migrate": "turbo -F server db:migrate",
+		"db:migrate:dev": "turbo run db:migrate:dev --filter=server",
+		"db:migrate:prod": "turbo run db:migrate:prod --filter=server",
+		"do:generate": "turbo -F server do:generate",
+		"ruler:apply": "bunx @intellectronica/ruler@latest apply --local-only",
+		"r2:backup": "cd scripts && ts-node src/r2-backup-manager.ts download",
+		"r2:seed": "cd scripts && ts-node src/r2-backup-manager.ts upload",
+		"r2:destroy": "cd scripts && CONFIRM_DELETE=yes ts-node src/r2-backup-manager.ts delete"
+	},
+	"workspaces": [
+		"apps/*",
+		"packages/*",
+		"scripts/website"
+	],
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}

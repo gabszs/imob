@@ -1,0 +1,67 @@
+import type { CSSProperties, PropsWithChildren } from "react";
+import { useTheme } from "@/web/lib/theme-provider";
+import { cn } from "@/web/lib/utils";
+
+const patternMask =
+	"linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)";
+
+export const appBackgroundStyle: CSSProperties = {
+	backgroundImage: "url(/pattern.png)",
+	backgroundRepeat: "repeat",
+	backgroundSize: "1028px",
+};
+
+const backgroundMaskStyle: CSSProperties = {
+	maskImage: patternMask,
+	WebkitMaskImage: patternMask,
+};
+
+export function AppBackground() {
+	const { theme } = useTheme();
+
+	// Determine if dark mode is active
+	const isDark =
+		theme === "dark" ||
+		(theme === "system" &&
+			typeof window !== "undefined" &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+	// Light mode: 0.05 (5%), Dark mode: 0.95 (95%)
+	const opacity = isDark ? 0.95 : 0.05;
+
+	return (
+		<div
+			aria-hidden="true"
+			className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+			style={backgroundMaskStyle}
+		>
+			<div
+				className="absolute top-1/2 left-1/2 size-[160%] -translate-x-1/2 -translate-y-1/2"
+				style={{
+					...appBackgroundStyle,
+					transform: "rotate(-15deg)",
+					transformOrigin: "center",
+					opacity,
+				}}
+			/>
+		</div>
+	);
+}
+
+interface BackgroundLayoutProps extends PropsWithChildren {
+	className?: string;
+	contentClassName?: string;
+}
+
+export function BackgroundLayout({
+	children,
+	className,
+	contentClassName,
+}: BackgroundLayoutProps) {
+	return (
+		<div className={cn("relative min-h-screen bg-background", className)}>
+			<AppBackground />
+			<div className={cn("relative z-10", contentClassName)}>{children}</div>
+		</div>
+	);
+}
