@@ -25,7 +25,6 @@ utilityRoutes.openapi(
 		},
 	}),
 	async (c: AppContext) => {
-		throw httpErrors.badRequest("test");
 		return c.json(
 			{
 				status: "ok",

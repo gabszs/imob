@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { HttpStatusCodes, HttpStatusPhrases } from "../../lib/constants";
 
 export const searchOptionsSchema = z.object({
 	page: z
@@ -97,45 +98,64 @@ export const shortUuidParamSchema = z.object({
 export function createNotFoundSchema(resourceName: string) {
 	return z
 		.object({
-			error: z.string().openapi({
-				description: "Short error title",
-				example: `${resourceName} not found`,
+			code: z.string().openapi({
+				description: "RFC Status phrase",
+				example: HttpStatusPhrases.NOT_FOUND,
 			}),
 			message: z.string().openapi({
 				description: "Detailed error message",
 				example: `The provided ${resourceName} was not found`,
 			}),
-			code: z.string().openapi({
-				description: "Error code",
-				example: `${resourceName.toUpperCase().replace(/-/g, "_")}_NOT_FOUND`,
+			status: z.string().openapi({
+				description: "RFC Status phrase",
+				example: HttpStatusCodes.NOT_FOUND,
 			}),
 		})
 		.openapi({
 			description: `${resourceName} not found response`,
 		});
 }
-
 export function createNoChangesSchema(resourceName: string) {
 	return z
 		.object({
-			success: z.boolean().openapi({
-				description: "Whether the request was successful",
-				example: false,
-			}),
 			error: z.string().openapi({
-				description: "Short error title",
-				example: "No changes detected",
+				description: "RFC Status phrase",
+				example: HttpStatusPhrases.UNPROCESSABLE_ENTITY,
 			}),
 			message: z.string().openapi({
 				description: "Detailed error message",
 				example: `No changes were detected in the ${resourceName} payload`,
 			}),
 			code: z.string().openapi({
-				description: "Error code",
-				example: "NO_CHANGES_DETECTED",
+				description: "RFC Status phrase",
+				example: HttpStatusCodes.UNPROCESSABLE_ENTITY,
 			}),
 		})
 		.openapi({
 			description: `No changes detected response for ${resourceName}`,
 		});
 }
+
+export const fileUploadSchema = z.object({
+	file: z.any().openapi({
+		description: "File to upload",
+		type: "string",
+		format: "binary",
+	}),
+});
+
+export const fileUploadSuccessSchema = z
+	.object({
+		message: z.string().openapi({
+			description: "Success message",
+			example: "File uploaded successfully",
+		}),
+		data: z.object({
+			file_key: z.string().openapi({
+				description: "Key of the uploaded file",
+				example: "uploads/550e8400-e29b-41d4-a716-446655440000",
+			}),
+		}),
+		metadata: z.null(),
+	})
+	.openapi("DocumentSuccess");
