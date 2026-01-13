@@ -1,4 +1,4 @@
-import { type FillLayer } from "@vis.gl/react-maplibre";
+import type { FillLayer } from "@vis.gl/react-maplibre";
 
 // Estados do Brasil - camada base
 export const brStatesLayer: Omit<FillLayer, "source"> = {

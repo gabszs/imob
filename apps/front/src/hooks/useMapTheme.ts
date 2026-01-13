@@ -1,6 +1,6 @@
-import { type MapTheme } from "@/web/components/ui/map/theme-selector";
-import { useTheme } from "@/web/lib/theme-provider";
 import { useEffect, useState } from "react";
+import type { MapTheme } from "@/web/components/ui/map/theme-selector";
+import { useTheme } from "@/web/lib/theme-provider";
 
 /**
  * Hook para gerenciar o tema do mapa com sincronização automática

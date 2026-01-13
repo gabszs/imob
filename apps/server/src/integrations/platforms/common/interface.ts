@@ -1,5 +1,5 @@
 // Base interface for all CAPI services
-import { type EventMessage, Trace } from "./types";
+import { type EventMessage, type Trace } from "./types";
 
 export interface CapiCredentials {
 	apiKey: string;

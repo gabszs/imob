@@ -1,4 +1,4 @@
-import { type ApiLogEntry } from "@fiberplane/mcp-gateway-types";
+import type { ApiLogEntry } from "@fiberplane/mcp-gateway-types";
 
 /**
  * Extract human-readable detail from MCP request/response

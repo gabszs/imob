@@ -1,8 +1,8 @@
 // Base abstract class for all CAPI services
 import { convertToUnixTimestamp, sha256Hash } from "../../../common/utils";
 import { mapEventNameToPlatform } from "./eventMapping";
-import { type CapiCredentials, ICapiService, ValidationResult } from "./interface";
-import { type EventMessage, Platform, Trace } from "./types";
+import { type CapiCredentials, type ICapiService, type ValidationResult } from "./interface";
+import { type EventMessage, type Platform, type Trace } from "./types";
 
 /**
  * Field exclusion rules for events

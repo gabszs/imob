@@ -1,10 +1,10 @@
+import { type DynamicToolUIPart, getToolOrDynamicToolName, type ToolUIPart } from "ai";
+import { ChevronDown, ChevronRight, Database, FileText, Globe, Search } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/web/components/ui/badge";
 import { Button } from "@/web/components/ui/button";
 import { Card } from "@/web/components/ui/card";
 import { type McpServer, useMcpServers } from "@/web/hooks/use-mcp-servers";
-import { type DynamicToolUIPart, getToolOrDynamicToolName, ToolUIPart } from "ai";
-import { ChevronDown, ChevronRight, Database, FileText, Globe, Search } from "lucide-react";
-import { useState } from "react";
 
 type ToolInvocationPart = ToolUIPart | DynamicToolUIPart;
 

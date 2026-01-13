@@ -6,13 +6,13 @@ import { NotFound } from "@/web/components/not-found";
 import { ThemeProvider } from "@/web/components/theme-provider";
 import { Toaster } from "@/web/components/ui/sonner";
 import "@/web/index.css";
-import { type authClient } from "@/web/lib/auth-client";
-import { type orpc } from "@/web/lib/orpc";
 import { type QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Outlet, useRouterState } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useEffect } from "react";
+import { type authClient } from "@/web/lib/auth-client";
+import { type orpc } from "@/web/lib/orpc";
 
 export interface RouterAppContext {
 	orpc: typeof orpc;

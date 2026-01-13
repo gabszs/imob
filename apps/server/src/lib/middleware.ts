@@ -3,7 +3,7 @@ import { type Next } from "hono";
 import { createMiddleware } from "hono/factory";
 import { UAParser } from "ua-parser-js";
 import { type ApiKey } from "../features/apiKeys/schemas";
-import { type AppContext, HonoEnv } from "../types";
+import { type AppContext, type HonoEnv } from "../types";
 import { httpErrors } from "./errors";
 import { buildOtelQueryAttributeMap } from "./telemetry";
 
@@ -18,10 +18,10 @@ export const authMiddleware = (options: { adminOnly?: boolean; allowApiKey?: boo
 
 			if (apiKeyToken?.startsWith("tk_")) {
 				const object = await c.env.R2.get(`api-keys/${apiKeyToken}`);
-				if (!object) throw httpErrors.entityNotFound("API-Key");
+				if (!object) throw httpErrors.unauthorized();
 
 				const apiKeyData = await object.json<ApiKey>();
-				if (!apiKeyData.isActive) throw httpErrors.entityNotFound("API-Key");
+				if (!apiKeyData.isActive) throw httpErrors.unauthorized();
 
 				const authenticatedUser = { ...apiKeyData, auth_method: "api-key" };
 				c.set("user", authenticatedUser);
@@ -119,7 +119,7 @@ async function extractErrorAttributes(response: Response) {
 	const clonedResponse = response.clone();
 	const body = (await clonedResponse.json()) as { error?: string; message?: string; code?: string };
 	return {
-		"error.type": body.error,
+		"error.status": body.status,
 		"error.message": body.message,
 		"error.code": body.code,
 		outcome: "error",

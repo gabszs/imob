@@ -1,7 +1,7 @@
-import { DocumentSkeleton } from "@/web/components/skeletons/document-skeleton";
-import { TECH_STACK_SECTIONS } from "@/web/lib/constants";
 import { createFileRoute } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { DocumentSkeleton } from "@/web/components/skeletons/document-skeleton";
+import { TECH_STACK_SECTIONS } from "@/web/lib/constants";
 
 const subtleLinkClass =
 	"relative inline-block text-current no-underline after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-current after:transition-[width] after:duration-200 after:ease-out after:content-[''] hover:after:w-full focus-visible:after:w-full focus-visible:outline-none";

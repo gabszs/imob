@@ -1,6 +1,6 @@
-import * as DropdownMenu from "@/web/components/ui/dropdown-menu";
 import { Search } from "lucide-react";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
+import * as DropdownMenu from "@/web/components/ui/dropdown-menu";
 
 interface FilterDropdownProps {
 	icon: ReactNode;

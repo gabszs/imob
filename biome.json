@@ -72,7 +72,13 @@
 				"noUnusedTemplateLiteral": "error",
 				"useNumberNamespace": "error",
 				"noInferrableTypes": "error",
-				"noUselessElse": "error"
+				"noUselessElse": "error",
+				"useImportType": {
+					"level": "error",
+					"options": {
+						"style": "inlineType"
+					}
+				}
 			}
 		}
 	},

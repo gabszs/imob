@@ -1,13 +1,13 @@
+import { Calendar, TrendingUp } from "lucide-react";
 import { type RouterOutputs } from "@/server/lib/router";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
 } from "@/web/components/ui/card";
 import { Progress } from "@/web/components/ui/progress";
-import { Calendar, TrendingUp } from "lucide-react";
 
 type UsageSummary = RouterOutputs["usage"]["getCurrentSummary"];
 

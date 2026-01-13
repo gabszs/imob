@@ -1,7 +1,7 @@
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/web/components/ui/button";
 import { Card } from "@/web/components/ui/card";
 import { type ChatMessage } from "@/web/types/chat";
-import { ChevronDown } from "lucide-react";
 import { MessageRenderer } from "./message-renderer";
 
 interface ChatMessagesListProps {

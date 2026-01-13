@@ -1,10 +1,10 @@
 import { type ToolUIPart } from "ai";
 import { nanoid } from "nanoid";
 import {
-    type ApiErrorPayload,
-    ChatMessage,
-    ChatMessageMetadata,
-    RawChatMessage,
+	type ApiErrorPayload,
+	type ChatMessage,
+	type ChatMessageMetadata,
+	type RawChatMessage,
 } from "../types/chat";
 
 /**

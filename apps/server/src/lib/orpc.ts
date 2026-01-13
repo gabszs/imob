@@ -48,4 +48,4 @@ export const protectedProcedure = publicProcedure.use(({ context, next }) => {
 	});
 });
 
-export { type ProtectedContext };
+export type { ProtectedContext };

@@ -1,4 +1,4 @@
-import { type MapLocationPoint } from "@/web/hooks/useAnalytics";
+import type { MapLocationPoint } from "@/web/hooks/useAnalytics";
 import { extractStateFromCityName, normalizeStateName } from "./state-mappings";
 
 export interface AggregatedAnalyticsData {

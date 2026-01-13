@@ -1,16 +1,16 @@
-import { getAuthHeaders } from "@/web/lib/auth-helpers";
-import { honoClient } from "@/web/lib/hono-client";
-import {
-    type CreateInput,
-    Integration,
-    UpdateInput,
-    WithOptimistic,
-} from "@/web/types/backend.types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { getAuthHeaders } from "@/web/lib/auth-helpers";
+import { honoClient } from "@/web/lib/hono-client";
+import type {
+	CreateInput,
+	Integration,
+	UpdateInput,
+	WithOptimistic,
+} from "@/web/types/backend.types";
 
 // Re-export for convenience
-export { type Integration };
+export type { Integration };
 
 // Type aliases for this hook
 export type IntegrationCreate = CreateInput<Integration>;

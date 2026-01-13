@@ -1,12 +1,12 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Send } from "lucide-react";
+import { type FormEvent, useCallback, useState } from "react";
 import { FeatureCards } from "@/web/components/feature-cards";
 import { Footer } from "@/web/components/footer";
 import { GuestShellSkeleton } from "@/web/components/skeletons/guest-skeleton";
 import { Button } from "@/web/components/ui/button";
 import { Input } from "@/web/components/ui/input";
 import { redirectIfAuthenticated } from "@/web/lib/route-guards";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Send } from "lucide-react";
-import { type FormEvent, useCallback, useState } from "react";
 
 export const Route = createFileRoute("/")({
 	beforeLoad: async (opts) => {

@@ -1,8 +1,8 @@
 import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
 import { HttpStatusCodes } from "../../lib/constants";
+import { httpErrors } from "../../lib/errors";
 import { type AppContext } from "../../types";
 import { healthSchema } from "./schemas";
-import { httpErrors } from "../../lib/errors";
 
 const utilityRoutes = new OpenAPIHono<AppContext>();
 
@@ -25,13 +25,15 @@ utilityRoutes.openapi(
 		},
 	}),
 	async (c: AppContext) => {
-		throw httpErrors.badRequest("test")
-		return c.json({
-			status: "ok",
-			timestamp: new Date().toISOString(),
-			metadata: c.env.VERSION_METADATA,
-		},
-		HttpStatusCodes.OK);
+		throw httpErrors.badRequest("test");
+		return c.json(
+			{
+				status: "ok",
+				timestamp: new Date().toISOString(),
+				metadata: c.env.VERSION_METADATA,
+			},
+			HttpStatusCodes.OK,
+		);
 	},
 );
 

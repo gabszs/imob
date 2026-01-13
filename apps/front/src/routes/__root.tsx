@@ -1,3 +1,10 @@
+import type { QueryClient } from "@tanstack/react-query";
+import {
+	createRootRouteWithContext,
+	HeadContent,
+	Outlet,
+	useRouterState,
+} from "@tanstack/react-router";
 import { AppBackground } from "@/web/components/background";
 import { FloatingThemeToggle } from "@/web/components/navbar/floating-theme-toggle";
 import { Header } from "@/web/components/navbar/header";
@@ -6,16 +13,9 @@ import { CollapsibleSidebar } from "@/web/components/sidebar/CollapsibleSidebar"
 import { SidebarProvider } from "@/web/components/sidebar/sidebar-context";
 import { Toaster } from "@/web/components/ui/sonner";
 import { authClient } from "@/web/lib/auth-client";
-import { type AuthContextValue } from "@/web/lib/auth-context";
-import { type orpc } from "@/web/lib/orpc";
+import type { AuthContextValue } from "@/web/lib/auth-context";
+import type { orpc } from "@/web/lib/orpc";
 import { ThemeProvider } from "@/web/lib/theme-provider";
-import { type QueryClient } from "@tanstack/react-query";
-import {
-    createRootRouteWithContext,
-    HeadContent,
-    Outlet,
-    useRouterState,
-} from "@tanstack/react-router";
 import "../index.css";
 
 export interface RouterAppContext {

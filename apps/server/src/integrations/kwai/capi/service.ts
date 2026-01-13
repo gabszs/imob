@@ -1,8 +1,8 @@
 import { sha256Hash } from "../../../common/utils";
 import { BaseCapiService, type EventExclusionRules } from "../../platforms/common/baseService";
 import { mapEventToPlatform } from "../../platforms/common/eventMapping";
-import { type CapiCredentials, ValidationResult } from "../../platforms/common/interface";
-import { type EventMessage, Trace } from "../../platforms/common/types";
+import { type CapiCredentials, type ValidationResult } from "../../platforms/common/interface";
+import { type EventMessage, type Trace } from "../../platforms/common/types";
 
 /**
  * Kwai CAPI Field Exclusion Rules

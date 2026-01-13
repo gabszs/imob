@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
-import { withCloudflare } from "better-auth-cloudflare";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, emailOTP, openAPI, phoneNumber } from "better-auth/plugins";
+import { withCloudflare } from "better-auth-cloudflare";
 import { drizzle } from "drizzle-orm/d1";
 import { type Context } from "hono";
 import { Resend } from "resend";

@@ -1,19 +1,19 @@
-import { type RouterOutputs } from "@/server/lib/router";
-import { Button } from "@/web/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/web/components/ui/card";
-import { useUserSettings } from "@/web/hooks/use-user-settings";
-import { orpc } from "@/web/lib/orpc";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { Loader2, Plus, Settings, ShieldAlert } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { type RouterOutputs } from "@/server/lib/router";
+import { Button } from "@/web/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/web/components/ui/card";
+import { useUserSettings } from "@/web/hooks/use-user-settings";
+import { orpc } from "@/web/lib/orpc";
 import { AddMcpServerDialog } from "./-components/tools/add-mcp-server-dialog";
 import { ExaApiKeyDialog } from "./-components/tools/exa-api-key-dialog";
 import { ExaApiKeySection } from "./-components/tools/exa-api-key-section";

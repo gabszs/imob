@@ -15,5 +15,4 @@ export interface EventMessage {
 
 export type Platform = "facebook" | "tiktok" | "reddit" | "pinterest" | "kwai";
 
-export { EventMetadata, type Trace };
-
+export type { EventMetadata, Trace };

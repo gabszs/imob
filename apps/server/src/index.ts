@@ -1,14 +1,14 @@
+import { env } from "cloudflare:workers";
 import { httpInstrumentationMiddleware } from "@hono/otel";
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { instrument } from "@microlabs/otel-cf-workers";
 import { RPCHandler } from "@orpc/server/fetch";
 import { Scalar } from "@scalar/hono-api-reference";
-import { type InferRouterInputs, InferRouterOutputs } from "@trpc/server";
-import { env } from "cloudflare:workers";
-import { rateLimiter } from "hono-rate-limiter";
+import { type InferRouterInputs, type InferRouterOutputs } from "@trpc/server";
 import { cors } from "hono/cors";
 import { showRoutes } from "hono/dev";
 import { appendTrailingSlash } from "hono/trailing-slash";
+import { rateLimiter } from "hono-rate-limiter";
 import { profileRouter } from "./features/profile/routes";
 import utilityRoutes from "./features/utils/routes";
 import { createAuth } from "./lib/auth";

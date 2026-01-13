@@ -1,5 +1,5 @@
-import { type AppType } from "@/server/index";
 import { hc } from "hono/client";
+import type { AppType } from "@/server/index";
 
 const API_BASE_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:8787";
 

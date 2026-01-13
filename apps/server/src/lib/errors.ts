@@ -119,12 +119,7 @@ export const httpErrors = {
 		),
 
 	badRequest: (message: string, opts?: ErrorOptions) =>
-		createHttpException(
-			HttpStatusPhrases.BAD_REQUEST,
-			message,
-			HttpStatusCodes.BAD_REQUEST,
-			opts,
-		),
+		createHttpException(HttpStatusPhrases.BAD_REQUEST, message, HttpStatusCodes.BAD_REQUEST, opts),
 
 	unauthorized: (opts?: ErrorOptions) =>
 		createHttpException(

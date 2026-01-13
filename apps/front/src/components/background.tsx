@@ -1,6 +1,6 @@
+import type { CSSProperties, PropsWithChildren } from "react";
 import { useTheme } from "@/web/lib/theme-provider";
 import { cn } from "@/web/lib/utils";
-import { type CSSProperties, PropsWithChildren } from "react";
 
 const patternMask =
 	"linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)";

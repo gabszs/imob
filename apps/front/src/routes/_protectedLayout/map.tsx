@@ -2,7 +2,7 @@ import CampaignSelector from "@/web/components/ui/map/campaign-selector";
 import GeocoderControl from "@/web/components/ui/map/geocoder-control";
 import SearchHistory from "@/web/components/ui/map/search-history";
 import ThemeSelector, {
-    type MapTheme,
+	type MapTheme,
 } from "@/web/components/ui/map/theme-selector";
 import TimeRangeSelector from "@/web/components/ui/map/timerange-selector";
 import YouAreHere from "@/web/components/ui/map/you-are-here";
@@ -15,23 +15,23 @@ import { useVisibleStates } from "@/web/hooks/useVisibleStates";
 import { matchFeatureToCount } from "@/web/lib/map/analytics-aggregator";
 import { brStatesLayer, highlightBRStateLayer } from "@/web/lib/map/br-states";
 import {
-    citiesLayer,
-    highlightCityLayer,
-    highlightUSACityLayer,
-    usaCitiesLayer,
+	citiesLayer,
+	highlightCityLayer,
+	highlightUSACityLayer,
+	usaCitiesLayer,
 } from "@/web/lib/map/map-styles";
 import { highlightUSStateLayer, usStatesLayer } from "@/web/lib/map/us-states";
 import "@maplibre/maplibre-gl-geocoder/dist/maplibre-gl-geocoder.css";
 import { createFileRoute } from "@tanstack/react-router";
 import {
-    Layer,
-    Map,
-    type MapRef,
-    Marker,
-    Popup,
-    Source,
+	Layer,
+	Map,
+	type MapRef,
+	Marker,
+	Popup,
+	Source,
 } from "@vis.gl/react-maplibre";
-import { type ExpressionSpecification, MapLayerMouseEvent } from "maplibre-gl";
+import type { ExpressionSpecification, MapLayerMouseEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 

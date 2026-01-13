@@ -1,6 +1,6 @@
-import { Button } from "@/web/components/ui/button";
 import { type ErrorComponentProps, useRouter } from "@tanstack/react-router";
 import { AlertCircle, Home, RefreshCw } from "lucide-react";
+import { Button } from "@/web/components/ui/button";
 
 export function ErrorBoundary({ error, reset }: ErrorComponentProps) {
 	const router = useRouter();

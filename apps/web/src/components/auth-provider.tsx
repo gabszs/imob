@@ -1,5 +1,5 @@
-import { authClient } from "@/web/lib/auth-client";
 import { createContext, type PropsWithChildren, useContext, useMemo } from "react";
+import { authClient } from "@/web/lib/auth-client";
 
 export type AuthSession = typeof authClient.$Infer.Session;
 

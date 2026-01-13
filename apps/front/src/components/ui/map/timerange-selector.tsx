@@ -1,7 +1,7 @@
-import { type TimeRange } from "@/web/hooks/useAnalytics";
 import { useControl } from "@vis.gl/react-maplibre";
-import { type IControl, Map } from "maplibre-gl";
+import type { IControl, Map } from "maplibre-gl";
 import { useCallback } from "react";
+import type { TimeRange } from "@/web/hooks/useAnalytics";
 
 interface TimeRangeSelectorProps {
 	timeRange: TimeRange;

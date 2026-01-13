@@ -1,4 +1,4 @@
-import { ResolveConfigFn } from "@microlabs/otel-cf-workers";
+import { type ResolveConfigFn } from "@microlabs/otel-cf-workers";
 import { trace } from "@opentelemetry/api";
 
 export function InstrumentClass(): ClassDecorator {
