@@ -9,10 +9,11 @@ import { cors } from "hono/cors";
 import { showRoutes } from "hono/dev";
 import { appendTrailingSlash } from "hono/trailing-slash";
 import { rateLimiter } from "hono-rate-limiter";
+import documentsRoutes from "./features/documents/routes";
 import { profileRouter } from "./features/profile/routes";
 import utilityRoutes from "./features/utils/routes";
 import { createAuth } from "./lib/auth";
-import { otelConfig } from "./lib/middleware";
+import { authMiddleware, otelConfig } from "./lib/middleware";
 import { openApiSchema } from "./lib/openapi";
 import { createContext } from "./lib/orpc";
 import { otel_config } from "./lib/telemetry";
@@ -90,6 +91,11 @@ app.all("/api/auth/*", async (c) => {
 	const auth = c.get("auth");
 	return auth.handler(c.req.raw);
 });
+
+app.use("/v1/*", authMiddleware({ adminOnly: true }));
+
+// v1 routes
+app.route("/v1", documentsRoutes);
 
 // ORPC routes
 app.use("/api/orpc/*", async (c: AppContext) => {
