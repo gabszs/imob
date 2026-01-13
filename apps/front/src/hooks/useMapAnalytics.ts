@@ -1,10 +1,10 @@
-import { useMemo } from "react";
 import { type TimeRange, useMapLocations } from "@/web/hooks/useAnalytics";
 import {
-	type AggregatedAnalyticsData,
-	buildAnalyticsLookup,
+    type AggregatedAnalyticsData,
+    buildAnalyticsLookup,
 } from "@/web/lib/map/analytics-aggregator";
-import type { VisibleStates } from "./useVisibleStates";
+import { useMemo } from "react";
+import { type VisibleStates } from "./useVisibleStates";
 
 export interface UseMapAnalyticsOptions {
 	campaignId: string | null;

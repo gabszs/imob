@@ -1,5 +1,5 @@
 // Event name mapping and validation for CAPI integrations
-import type { Platform } from "./types";
+import { type Platform } from "./types";
 
 // Standard event names (case-insensitive)
 const STANDARD_EVENTS = [

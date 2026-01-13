@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import type { Highlighter } from "shiki";
-import { createHighlighter } from "shiki";
 import { cn } from "@/web/utils/cn";
+import { useEffect, useState } from "react";
+import { createHighlighter, type Highlighter } from "shiki";
 
 let highlighterInstance: Highlighter | null = null;
 let highlighterPromise: Promise<Highlighter> | null = null;

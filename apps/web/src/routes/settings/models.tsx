@@ -1,19 +1,19 @@
+import { type RouterOutputs } from "@/server/lib/router";
+import { Badge } from "@/web/components/ui/badge";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/web/components/ui/card";
+import { useUpdateUserSettings, useUserSettings } from "@/web/hooks/use-user-settings";
+import { orpc } from "@/web/lib/orpc";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import type { RouterOutputs } from "@/server/lib/router";
-import { Badge } from "@/web/components/ui/badge";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/web/components/ui/card";
-import { useUpdateUserSettings, useUserSettings } from "@/web/hooks/use-user-settings";
-import { orpc } from "@/web/lib/orpc";
 import { ModelRow } from "./-components/models/model-row";
 
 type ModelDefinition = RouterOutputs["models"]["list"][number];

@@ -1,6 +1,6 @@
 import { createContext, type ReactNode, useContext, useState } from "react";
 
-interface SidebarContextType {
+interface SidebarContext{ type
 	isExpanded: boolean;
 	setIsExpanded: (expanded: boolean) => void;
 	toggle: () => void;

@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import { Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
-import { ArrowRight, Plus } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import type { RouterOutputs } from "@/server/lib/router";
+import { type RouterOutputs } from "@/server/lib/router";
 import { Button } from "@/web/components/ui/button";
 import {
-	Sheet,
-	SheetContent,
-	SheetDescription,
-	SheetHeader,
-	SheetTitle,
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
 } from "@/web/components/ui/sheet";
 import { useIsMobile } from "@/web/hooks/use-mobile";
 import { useUpdateUserSettings, useUserSettings } from "@/web/hooks/use-user-settings";
@@ -18,6 +14,10 @@ import { orpc } from "@/web/lib/orpc";
 import { generateConversationId } from "@/web/utils/chat";
 import { cn } from "@/web/utils/cn";
 import { formatDistanceToNowStrict, getTimeOfDayLabel } from "@/web/utils/date";
+import { useQuery } from "@tanstack/react-query";
+import { Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
+import { ArrowRight, Plus } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { MessageInput } from "./message-input";
 
 export function ChatShell() {

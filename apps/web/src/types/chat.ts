@@ -1,7 +1,7 @@
-import type { UIMessage } from "ai";
-import type { AppMessageMetadata } from "@/server/features/ai/types";
-import type { ListMessagesResponse } from "@/server/features/chat/routes";
-import type { RouterOutputs } from "@/server/lib/router";
+import { type AppMessageMetadata } from "@/server/features/ai/types";
+import { type ListMessagesResponse } from "@/server/features/chat/routes";
+import { type RouterOutputs } from "@/server/lib/router";
+import { type UIMessage } from "ai";
 
 /**
  * Shared chat-related types used across the application

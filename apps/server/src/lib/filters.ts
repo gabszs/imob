@@ -1,4 +1,4 @@
-import type { Filters } from "../common/services/baseService";
+import { type Filters } from "../common/services/baseService";
 
 export interface User {
 	id: string;

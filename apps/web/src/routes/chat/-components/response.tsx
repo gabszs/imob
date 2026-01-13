@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/web/utils/cn";
+import { type HTMLAttributes, ReactNode } from "react";
 
 interface ResponseProps extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode;

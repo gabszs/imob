@@ -1,8 +1,8 @@
 import { sha256Hash } from "../../../common/utils";
 import { BaseCapiService } from "../../platforms/common/baseService";
 import { mapEventToPlatform } from "../../platforms/common/eventMapping";
-import type { CapiCredentials, ValidationResult } from "../../platforms/common/interface";
-import type { EventMessage, Trace } from "../../platforms/common/types";
+import { type CapiCredentials, ValidationResult } from "../../platforms/common/interface";
+import { type EventMessage, Trace } from "../../platforms/common/types";
 
 export class FacebookCapiService extends BaseCapiService {
 	constructor() {

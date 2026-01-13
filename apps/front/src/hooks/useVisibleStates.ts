@@ -1,6 +1,6 @@
-import type { MapRef } from "@vis.gl/react-maplibre";
+import { type MapRef } from "@vis.gl/react-maplibre";
 import { type RefObject, useEffect, useState } from "react";
-import type { ViewportState } from "./useDebouncedViewport";
+import { type ViewportState } from "./useDebouncedViewport";
 
 export interface VisibleStates {
 	brStates: string[];

@@ -1,3 +1,3 @@
-import type { Context } from "hono";
+import { type OpenAPIHono } from "@hono/zod-openapi";
 
-export type AppContext = Context<{ Bindings: Env }>;
+export type AppContext = OpenAPIHono<{ Bindings: Env }>;

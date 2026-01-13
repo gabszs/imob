@@ -1,11 +1,11 @@
-import type { ReasoningUIPart } from "ai";
+import { Badge } from "@/web/components/ui/badge";
+import { Button } from "@/web/components/ui/button";
+import { Card } from "@/web/components/ui/card";
+import { type ReasoningUIPart } from "ai";
 import { Brain, ChevronDown, ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Badge } from "@/web/components/ui/badge";
-import { Button } from "@/web/components/ui/button";
-import { Card } from "@/web/components/ui/card";
 
 interface ReasoningBlockProps {
 	part: ReasoningUIPart;

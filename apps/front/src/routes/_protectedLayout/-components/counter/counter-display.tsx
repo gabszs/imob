@@ -1,6 +1,6 @@
-import { memo } from "react";
-import type { CounterState } from "@/web/lib/api/counter";
+import { type CounterState } from "@/web/lib/api/counter";
 import { cn } from "@/web/lib/utils";
+import { memo } from "react";
 
 interface CounterDisplayProps {
 	state: CounterState;

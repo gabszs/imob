@@ -1,4 +1,4 @@
-import type { QuickPrompt } from "@/web/types/chat";
+import { type QuickPrompt } from "@/web/types/chat";
 
 /**
  * Application-wide constants

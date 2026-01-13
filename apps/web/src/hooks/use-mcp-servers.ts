@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import type { RouterOutputs } from "@/server/lib/router";
+import { type RouterOutputs } from "@/server/lib/router";
 import { orpc } from "@/web/lib/orpc";
+import { useQuery } from "@tanstack/react-query";
 
 export type McpServer = RouterOutputs["mcp"]["listServers"][number];
 

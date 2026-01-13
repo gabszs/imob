@@ -1,7 +1,7 @@
+import { type Campaign } from "@/web/hooks/useCampaigns";
 import { useControl } from "@vis.gl/react-maplibre";
-import type { IControl, Map } from "maplibre-gl";
+import { type IControl, Map } from "maplibre-gl";
 import { useCallback, useEffect } from "react";
-import type { Campaign } from "@/web/hooks/useCampaigns";
 
 interface CampaignSelectorProps {
 	campaigns: Campaign[];

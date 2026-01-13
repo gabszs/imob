@@ -1,5 +1,5 @@
+import { type ChatMessage } from "@/web/types/chat";
 import { useMemo } from "react";
-import type { ChatMessage } from "@/web/types/chat";
 
 type UseStreamingIndicatorParams = {
 	messages: ChatMessage[];

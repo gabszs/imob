@@ -1,7 +1,7 @@
 import { BaseCapiService, type EventExclusionRules } from "../../platforms/common/baseService";
 import { mapEventToPlatform } from "../../platforms/common/eventMapping";
-import type { CapiCredentials, ValidationResult } from "../../platforms/common/interface";
-import type { EventMessage, Trace } from "../../platforms/common/types";
+import { type CapiCredentials, ValidationResult } from "../../platforms/common/interface";
+import { type EventMessage, Trace } from "../../platforms/common/types";
 
 function isValidUUID(uuid: string): boolean {
 	const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

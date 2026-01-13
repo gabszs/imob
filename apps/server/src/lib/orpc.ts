@@ -1,5 +1,5 @@
 import { ORPCError, os } from "@orpc/server";
-import type { Context as HonoContext } from "hono";
+import { type Context as HonoContext } from "hono";
 import { getDb } from "./database";
 
 export type CreateContextOptions = {
@@ -48,4 +48,4 @@ export const protectedProcedure = publicProcedure.use(({ context, next }) => {
 	});
 });
 
-export type { ProtectedContext };
+export { type ProtectedContext };

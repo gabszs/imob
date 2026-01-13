@@ -1,10 +1,10 @@
-import type { ApiLogEntry } from "@fiberplane/mcp-gateway-types";
+import { type ApiLogEntry } from "@fiberplane/mcp-gateway-types";
 import {
-	format,
-	isSameDay,
-	isWithinInterval,
-	startOfWeek,
-	subDays,
+    format,
+    isSameDay,
+    isWithinInterval,
+    startOfWeek,
+    subDays,
 } from "date-fns";
 
 /**

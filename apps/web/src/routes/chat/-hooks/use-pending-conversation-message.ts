@@ -1,5 +1,5 @@
+import { type ChatMessage } from "@/web/types/chat";
 import { useEffect, useState } from "react";
-import type { ChatMessage } from "@/web/types/chat";
 
 interface UsePendingConversationMessageParams {
 	chatId: string;

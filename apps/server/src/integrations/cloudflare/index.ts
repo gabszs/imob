@@ -70,17 +70,17 @@ export class Cloudflare extends Core.APIClient {
 
 export { CustomHostnames };
 
-export { APIError, CloudflareError } from "./core";
-export type {
-	BundleMethod,
-	CertificateCA,
-	CustomHostname,
-	CustomHostnameCreateParams,
-	CustomHostnameCreateResponse,
-	CustomHostnameDeleteParams,
-	CustomHostnameDeleteResponse,
-	CustomHostnameGetParams,
-	CustomHostnameGetResponse,
-	DCVMethod,
-	DomainValidationType,
-} from "./resources/custom-hostnames/custom-hostnames";
+    export { APIError, CloudflareError } from "./core";
+    export {
+        CertificateCA,
+        CustomHostname,
+        CustomHostnameCreateParams,
+        CustomHostnameCreateResponse,
+        CustomHostnameDeleteParams,
+        CustomHostnameDeleteResponse,
+        CustomHostnameGetParams,
+        CustomHostnameGetResponse,
+        DCVMethod,
+        DomainValidationType, type BundleMethod
+    } from "./resources/custom-hostnames/custom-hostnames";
+

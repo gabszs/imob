@@ -1,13 +1,13 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
 import { useAuth } from "@/web/components/auth-provider";
 import { Badge } from "@/web/components/ui/badge";
 import { Button } from "@/web/components/ui/button";
 import { authClient } from "@/web/lib/auth-client";
 import { orpc } from "@/web/lib/orpc";
-import type { Session } from "@/web/types/user";
+import { type Session } from "@/web/types/user";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 import { getDeviceIcon } from "./utils";
 
 function SessionItem({

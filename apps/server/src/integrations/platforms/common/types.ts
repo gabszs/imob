@@ -1,6 +1,6 @@
 // Common types for all CAPI integrations
-import type { EventMetadata } from "../../../features/events/schemas";
-import type { Trace } from "../../../features/traces/schemas";
+import { type EventMetadata } from "../../../features/events/schemas";
+import { type Trace } from "../../../features/traces/schemas";
 
 export interface EventMessage {
 	id?: string;
@@ -15,4 +15,5 @@ export interface EventMessage {
 
 export type Platform = "facebook" | "tiktok" | "reddit" | "pinterest" | "kwai";
 
-export type { Trace, EventMetadata };
+export { EventMetadata, type Trace };
+

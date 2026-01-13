@@ -1,9 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useCallback, useEffect } from "react";
-import type { RouterInputs, RouterOutputs } from "@/server/lib/router";
+import { type RouterInputs, RouterOutputs } from "@/server/lib/router";
 import { useAuth } from "@/web/components/auth-provider";
 import { orpc } from "@/web/lib/orpc";
 import { getStoredChatWidth, setStoredChatWidth } from "@/web/lib/user-preferences";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useCallback, useEffect } from "react";
 
 export type UserSettings = RouterOutputs["settings"]["get"];
 

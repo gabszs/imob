@@ -1,5 +1,5 @@
 import { useControl } from "@vis.gl/react-maplibre";
-import type { IControl, Map } from "maplibre-gl";
+import { type IControl, Map } from "maplibre-gl";
 import { useCallback, useEffect } from "react";
 
 interface SearchHistoryProps {

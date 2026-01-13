@@ -1,5 +1,5 @@
-import type { LocalTrace, ReadableSpan, ResolveConfigFn } from "@microlabs/otel-cf-workers";
-import { SpanStatusCode, trace } from "@opentelemetry/api";
+import { ResolveConfigFn } from "@microlabs/otel-cf-workers";
+import { trace } from "@opentelemetry/api";
 
 export function InstrumentClass(): ClassDecorator {
 	return (target: Function) => {

@@ -1,6 +1,6 @@
-import type { QueryClient } from "@tanstack/react-query";
+import { type authClient } from "@/web/lib/auth-client";
+import { type QueryClient } from "@tanstack/react-query";
 import { redirect } from "@tanstack/react-router";
-import type { authClient } from "@/web/lib/auth-client";
 
 interface RedirectIfAuthenticatedOptions {
 	authClient: typeof authClient;

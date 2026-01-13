@@ -4,61 +4,53 @@
  */
 
 // Domains (from cloaker feature)
-export type {
-	Domain,
-	DomainNoChanges,
-	DomainNotFound,
+export {
+    DomainNoChanges,
+    DomainNotFound, type Domain
 } from "@/server/cloaker/features/domains/schemas";
 // API Keys
-export type {
-	ApiKey,
-	ApiKeyNoChanges,
-	ApiKeyNotFound,
+export {
+    ApiKeyNoChanges,
+    ApiKeyNotFound, type ApiKey
 } from "@/server/features/apiKeys/schemas";
 // Campaign Pixels
-export type {
-	CampaignPixel,
-	CampaignPixelNoChanges,
-	CampaignPixelNotFound,
+export {
+    CampaignPixelNoChanges,
+    CampaignPixelNotFound, type CampaignPixel
 } from "@/server/features/campaignPixels/schemas";
 // Campaigns
-export type {
-	Campaign,
-	CampaignNoChanges,
-	CampaignNotFound,
+export {
+    CampaignNoChanges,
+    CampaignNotFound, type Campaign
 } from "@/server/features/campaigns/schemas";
 
 // Events
-export type {
-	Event,
-	EventMetadata,
-	EventNoChanges,
-	EventNotFound,
-	OutputEvent,
-	OutputEventMetadata,
+export {
+    EventMetadata,
+    EventNoChanges,
+    EventNotFound,
+    OutputEvent,
+    OutputEventMetadata, type Event
 } from "@/server/features/events/schemas";
 
 // Integrations
-export type {
-	Integration,
-	IntegrationNoChanges,
-	IntegrationNotFound,
+export {
+    IntegrationNoChanges,
+    IntegrationNotFound, type Integration
 } from "@/server/features/integrations/schemas";
 
 // Pixels
-export type {
-	Pixel,
-	PixelNoChanges,
-	PixelNotFound,
+export {
+    PixelNoChanges,
+    PixelNotFound, type Pixel
 } from "@/server/features/pixels/schemas";
 
 // Traces
-export type {
-	Trace,
-	TraceInput,
-	TraceNoChanges,
-	TraceNotFound,
-	TraceUpdate,
+export {
+    TraceInput,
+    TraceNoChanges,
+    TraceNotFound,
+    TraceUpdate, type Trace
 } from "@/server/features/traces/schemas";
 
 /**

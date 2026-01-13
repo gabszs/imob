@@ -1,32 +1,32 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Brain, Globe, Hammer, Settings2, ShieldCheck, Wrench } from "lucide-react";
-import { useMemo, useState } from "react";
-import { toast } from "sonner";
-import type { RouterOutputs } from "@/server/lib/router";
+import { type RouterOutputs } from "@/server/lib/router";
 import { Badge } from "@/web/components/ui/badge";
 import { Button } from "@/web/components/ui/button";
 import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
 } from "@/web/components/ui/dialog";
 import { Label } from "@/web/components/ui/label";
 import { ScrollArea } from "@/web/components/ui/scroll-area";
 import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/web/components/ui/select";
 import { Separator } from "@/web/components/ui/separator";
 import { Switch } from "@/web/components/ui/switch";
 import { type McpServer, useMcpServers } from "@/web/hooks/use-mcp-servers";
 import { useUpdateUserSettings, useUserSettings } from "@/web/hooks/use-user-settings";
 import { orpc } from "@/web/lib/orpc";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Brain, Globe, Hammer, Settings2, ShieldCheck, Wrench } from "lucide-react";
+import { useMemo, useState } from "react";
+import { toast } from "sonner";
 
 interface ChatSettingsDialogProps {
 	disabled?: boolean;

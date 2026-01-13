@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
-import type { ChatMessage, RawChatMessage } from "@/web/types/chat";
+import { type ChatMessage, RawChatMessage } from "@/web/types/chat";
 import { normalizeMessages } from "@/web/utils/chat";
+import { useEffect, useRef } from "react";
 
 interface UseInitializeChatMessagesParams {
 	chatId: string;

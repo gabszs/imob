@@ -1,13 +1,12 @@
-import { betterAuth, PhoneNumber } from "better-auth";
+import { betterAuth } from "better-auth";
+import { withCloudflare } from "better-auth-cloudflare";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, emailOTP, openAPI, phoneNumber } from "better-auth/plugins";
-import { withCloudflare } from "better-auth-cloudflare";
 import { drizzle } from "drizzle-orm/d1";
-import type { Context } from "hono";
+import { type Context } from "hono";
 import { Resend } from "resend";
 import { models } from "../db/models";
-import type { CloudflareBindings } from "../env";
-import type { AppContext } from "../types";
+import { type AppContext } from "../types";
 import { EMAIL_FROM_ADDRESS, EMAIL_FROM_NAME } from "./constants";
 import {
 	renderResetPasswordEmail,

@@ -1,11 +1,9 @@
 import { context as otelContext, SpanStatusCode, trace } from "@opentelemetry/api";
-import type { Next } from "hono";
+import { type Next } from "hono";
 import { createMiddleware } from "hono/factory";
 import { UAParser } from "ua-parser-js";
-import { session } from "../../../../trash/better-chat/apps/server/src/db/d1/schema/auth";
-import type { ApiKey } from "../features/apiKeys/schemas";
-import type { Integration } from "../features/integrations/schemas";
-import type { AppContext, HonoEnv } from "../types";
+import { type ApiKey } from "../features/apiKeys/schemas";
+import { type AppContext, HonoEnv } from "../types";
 import { httpErrors } from "./errors";
 import { buildOtelQueryAttributeMap } from "./telemetry";
 

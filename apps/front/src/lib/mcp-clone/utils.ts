@@ -1,4 +1,4 @@
-import type { ApiLogEntry } from "@fiberplane/mcp-gateway-types";
+import { type ApiLogEntry } from "@fiberplane/mcp-gateway-types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 

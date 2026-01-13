@@ -1,6 +1,8 @@
 import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
-import type { AppContext } from "../../types";
+import { HttpStatusCodes } from "../../lib/constants";
+import { type AppContext } from "../../types";
 import { healthSchema } from "./schemas";
+import { httpErrors } from "../../lib/errors";
 
 const utilityRoutes = new OpenAPIHono<AppContext>();
 
@@ -12,7 +14,7 @@ utilityRoutes.openapi(
 		method: "get",
 		path: "/health",
 		responses: {
-			200: {
+			[HttpStatusCodes.OK]: {
 				description: "Service is healthy and operational",
 				content: {
 					"application/json": {
@@ -23,11 +25,13 @@ utilityRoutes.openapi(
 		},
 	}),
 	async (c: AppContext) => {
+		throw httpErrors.badRequest("test")
 		return c.json({
 			status: "ok",
 			timestamp: new Date().toISOString(),
 			metadata: c.env.VERSION_METADATA,
-		});
+		},
+		HttpStatusCodes.OK);
 	},
 );
 

@@ -1,15 +1,15 @@
+import { type RouterOutputs } from "@/server/lib/router";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/web/components/ui/select";
+import { orpc } from "@/web/lib/orpc";
 import { useQuery } from "@tanstack/react-query";
 import { Brain } from "lucide-react";
 import { useMemo } from "react";
-import type { RouterOutputs } from "@/server/lib/router";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/web/components/ui/select";
-import { orpc } from "@/web/lib/orpc";
 
 interface ModelSelectorProps {
 	modelId: string;

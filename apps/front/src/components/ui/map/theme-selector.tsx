@@ -1,5 +1,5 @@
 import { useControl } from "@vis.gl/react-maplibre";
-import type { IControl, Map } from "maplibre-gl";
+import { type IControl, Map } from "maplibre-gl";
 import { useCallback } from "react";
 
 export type MapTheme = "liberty" | "bright" | "positron" | "dark" | "fiord";

@@ -1,5 +1,4 @@
-import type { Schema } from "hast-util-sanitize";
-import { defaultSchema } from "hast-util-sanitize";
+import { defaultSchema, type Schema } from "hast-util-sanitize";
 import { memo, type ReactNode } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeSanitize from "rehype-sanitize";

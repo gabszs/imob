@@ -1,10 +1,10 @@
-import type { RouterOutputs } from "@/server/lib/router";
+import { type RouterOutputs } from "@/server/lib/router";
 import { Progress } from "@/web/components/ui/progress";
 import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
 } from "@/web/components/ui/tooltip";
 
 type UsageStats = RouterOutputs["usage"]["getStats"];
