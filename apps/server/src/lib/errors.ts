@@ -42,7 +42,6 @@ export const httpErrors = {
 	duplicateField: (entity: string, field: string, opts?: ErrorOptions) =>
 		createHttpException(
 			HttpStatusPhrases.CONFLICT,
-			`${entity.replace(/-/g, "_").toUpperCase()}_${field.replace(/-/g, "_").toUpperCase()}_ALREADY_EXISTS`,
 			`A ${entity} with this ${field} already exists.`,
 			HttpStatusCodes.CONFLICT,
 			opts,
