@@ -100,7 +100,7 @@ function buildServiceAttributes(c: AppContext) {
 		"service.build.git_hash": c.env.commitHash,
 		"service.build.git_branch": c.env.commitBranch,
 		"service.build.deployment.user": c.env.deploymentUser,
-		"service.build.deployment.email": c.env.deploymentEmail,
+		// "service.build.deployment.email": c.env.deploymentEmail,
 		"service.build.deployment.trigger": c.env.deploymentTrigger,
 		"service.build.deployment.id": c.env.VERSION_METADATA.id,
 		"service.build.deployment.timestamp": c.env.VERSION_METADATA.timestamp,
@@ -175,7 +175,6 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 			c.res.headers.set(headerName, traceId);
 			// span.addEvent("wideEvent", event);
 			span.setAttributes(event);
-
 			if (isError) {
 				span.setStatus({ code: SpanStatusCode.ERROR, message: `HTTP ${status_code}` });
 			} else {

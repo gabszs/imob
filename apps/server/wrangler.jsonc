@@ -11,7 +11,7 @@
     "ENVIRONMENT": "production",
     "CORS_ORIGIN": "https://jsonfy.dev,https://jsonfy.io,https://new.jsonfy.io,https://old.jsonfy.io",
     "BETTER_AUTH_URL": "https://api.jsonfy.io/api/auth",
-    "commitHash": "af46fd88538e5703cd34b2a924a3527592a13428",
+    "commitHash": "903f45c993d71dce670b0cdf6591e9e617dd7ad7",
     "commitBranch": "master",
     "deploymentUser": "GabrielDeCarvalho",
     "deploymentEmail": "gnorberc@emeal.nttdata.com",

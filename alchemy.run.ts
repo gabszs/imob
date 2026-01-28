@@ -156,18 +156,18 @@ const [worker, web] = await Promise.all([
 		dev: { port: 8787, remote: false },
 	}),
 
-	Vite("web", {
-		cwd: "apps/web",
-		name: `${app.name}-web`,
-		// version: TRAKI_WEB_VERSION,
-		adopt: true,
-		assets: "dist",
-		bindings: {
-			VITE_CLIENT_URL: alchemy.env.VITE_CLIENT_URL,
-			VITE_SERVER_URL: alchemy.env.VITE_SERVER_URL,
-		},
-		dev: { command: "pnpm run dev" },
-	}),
+	// Vite("web", {
+	// 	cwd: "apps/web",
+	// 	name: `${app.name}-web`,
+	// 	// version: TRAKI_WEB_VERSION,
+	// 	adopt: true,
+	// 	assets: "dist",
+	// 	bindings: {
+	// 		VITE_CLIENT_URL: alchemy.env.VITE_CLIENT_URL,
+	// 		VITE_SERVER_URL: alchemy.env.VITE_SERVER_URL,
+	// 	},
+	// 	dev: { command: "pnpm run dev" },
+	// }),
 ]);
 
 await WranglerJson({
