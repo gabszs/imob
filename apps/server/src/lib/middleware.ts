@@ -93,6 +93,7 @@ function buildUserAgentAttributes(userAgent: string | undefined) {
 function buildServiceAttributes(c: AppContext) {
 	return {
 		"service.environment": c.env.ENVIRONMENT,
+		"deployment.environment": c.env.ENVIRONMENT,
 		"service.team": "gabrielcarvalho",
 		"service.owner": "gabrielcarvalho",
 		"service.version": c.env.SERVICE_VERSION,
@@ -159,6 +160,14 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 		const client_address = c.req.header("cf-connecting-ip");
 		const userAgent = c.req.header("user-agent");
 
+		// Extrai o body se existir
+		let requestBody: unknown;
+		try {
+			requestBody = await c.req.json();
+		} catch {
+			// Não há body ou não é JSON
+		}
+
 		const event: Record<string, unknown> = {
 			...buildServiceAttributes(c),
 			...buildClientGeoAttributes(c.req.raw.cf),
@@ -168,6 +177,7 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 			"deployment.id": c.env.VERSION_METADATA.id,
 			timestamp: new Date(startTime).toISOString(),
 			"client.address": client_address,
+			...(requestBody !== undefined && { "http.request.body": requestBody }),
 		};
 
 		c.set("wideEvent", event);
@@ -190,19 +200,20 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 		event["ratelimit.triggered"] = isRateLimit;
 
 		if (isJsonError) {
-			Object.assign(event, await extractErrorAttributes(c.res));
+			// Object.assign(event, await extractErrorAttributes(c.res));
+			event["outcome"] = "error";
 		} else {
 			event["outcome"] = "success";
 		}
 
-		if (span && traceId) {
-			c.res.headers.set(headerName, traceId);
+		// if (span && traceId) {
 			// span.addEvent("wideEvent", event);
-			span.setAttributes(event);
-			if (isError) {
-				span.setStatus({ code: SpanStatusCode.ERROR, message: `HTTP ${status_code}` });
-			} else {
-				span.setStatus({ code: SpanStatusCode.OK });
-			}
-		}
+			// span.setAttributes(event);
+			// if (isError) {
+			// 	span.setStatus({ code: SpanStatusCode.ERROR, message: `HTTP ${status_code}` });
+			// } else {
+			// 	span.setStatus({ code: SpanStatusCode.OK });
+			// }
+		// }
+		c.res.headers.set(headerName, traceId);
 	});
