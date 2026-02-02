@@ -215,5 +215,6 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 			// 	span.setStatus({ code: SpanStatusCode.OK });
 			// }
 		// }
+		span.setAttributes(event);
 		c.res.headers.set(headerName, traceId);
 	});
