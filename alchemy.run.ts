@@ -131,7 +131,8 @@ const [worker, web] = await Promise.all([
 		},
 		observability: {
 			enabled: true,
-			traces: { enabled: true, headSamplingRate: 1.0 },
+			traces: { enabled: true, headSamplingRate: 1.0, destinations: ["grafana-labs-traces-delfia"] },
+			logs: { enabled: true, destinations: ["grafana-labs-logs-delfia"] },
 		},
 		sourceMap: true,
 		// domains: ["api.traki.io"],
