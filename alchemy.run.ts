@@ -41,6 +41,12 @@ async function getGitMetadata() {
 const commitInfo = await getGitMetadata();
 console.log("Commit Info:", commitInfo);
 
+async function getServiceVersion(packageJsonPath: string): Promise<string> {
+	const absolutePath = resolve(packageJsonPath);
+	const packageJson = JSON.parse(await readFile(absolutePath, "utf-8"));
+	return packageJson.version;
+}
+
 async function bumpPatchVersion(packageJsonPath: string): Promise<string> {
 	const absolutePath = resolve(packageJsonPath);
 	const packageJson = JSON.parse(await readFile(absolutePath, "utf-8"));
@@ -109,6 +115,8 @@ const RATE_LIMIT = RateLimit({
 	},
 });
 
+const serverVersion = await getServiceVersion("apps/server/package.json");
+
 const [worker, web] = await Promise.all([
 	Worker("server", {
 		cwd: "apps/server",
@@ -146,6 +154,7 @@ const [worker, web] = await Promise.all([
 			GOOGLE_CLIENT_SECRET: alchemy.secret.env.GOOGLE_CLIENT_SECRET,
 
 			// wide-events data
+			SERVICE_VERSION: serverVersion,
 			VERSION_METADATA,
 			commitHash: commitInfo.commit || "",
 			commitBranch: commitInfo.branch || "",
@@ -204,7 +213,7 @@ console.log("┌─────────────┬───────�
 console.log("│ Service     │ Version  │ URL                        │");
 console.log("├─────────────┼──────────┼────────────────────────────┤");
 console.log(`│ API         │ v${TRAKI_API_VERSION.padEnd(7)} │ https://api.traki.io       │`);
-console.log(`│ Web         │ v${TRAKI_WEB_VERSION.padEnd(7)} │ https://traki.io           │`);
+console.log(`│ Web         │ v${serverVersion.padEnd(7)} │ https://traki.io           │`);
 console.log(`│ Old Web     │ v${TRAKI_OLD_WEB_VERSION.padEnd(7)} │ https://old.traki.io       │`);
 console.log("└─────────────┴──────────┴────────────────────────────┘");
 

@@ -95,7 +95,7 @@ function buildServiceAttributes(c: AppContext) {
 		"service.environment": c.env.ENVIRONMENT,
 		"service.team": "gabrielcarvalho",
 		"service.owner": "gabrielcarvalho",
-		"service.version": c.env.VERSION,
+		"service.version": c.env.SERVICE_VERSION,
 		"service.discord": "kali9849",
 		"service.build.git_hash": c.env.commitHash,
 		"service.build.git_branch": c.env.commitBranch,
@@ -107,11 +107,34 @@ function buildServiceAttributes(c: AppContext) {
 	};
 }
 
-function buildLocalizationAttributes(cf: any) {
+function buildClientGeoAttributes(cf: Record<string, unknown> | undefined) {
+	if (!cf) return {};
 	return {
-		"localization.location": cf?.colo,
-		"localization.region_code": cf?.regionCode,
-		"localization.city": cf?.city,
+		// Geo location
+		"client.geo.country.iso_code": cf.country,
+		"client.geo.continent.code": cf.continent,
+		"client.geo.region.iso_code": cf.regionCode,
+		"client.geo.locality.name": cf.city,
+		"client.geo.postal_code": cf.postalCode,
+		"client.geo.location.lat": cf.latitude,
+		"client.geo.location.lon": cf.longitude,
+		// Network/Cloud
+		"cloud.availability_zone": cf.colo,
+		"http.flavor": cf.httpProtocol,
+		"network.tls.protocol.version": cf.tlsVersion,
+		"network.tls.cipher": cf.tlsCipher,
+	};
+}
+
+function buildBrowserAttributes(c: AppContext) {
+	const secChUa = c.req.header("sec-ch-ua");
+	const secChUaMobile = c.req.header("sec-ch-ua-mobile");
+	const secChUaPlatform = c.req.header("sec-ch-ua-platform");
+
+	return {
+		"browser.brands": secChUa,
+		"browser.mobile": secChUaMobile === "?1",
+		"browser.platform": secChUaPlatform?.replace(/"/g, ""),
 	};
 }
 
@@ -138,8 +161,9 @@ export const otelConfig = (options: TraceIdMiddlewareOptions = {}) =>
 
 		const event: Record<string, unknown> = {
 			...buildServiceAttributes(c),
-			...buildLocalizationAttributes(c.req.raw.cf),
+			...buildClientGeoAttributes(c.req.raw.cf),
 			...buildUserAgentAttributes(userAgent),
+			...buildBrowserAttributes(c),
 			"http.request.id": c.req.header("cf-ray"),
 			"deployment.id": c.env.VERSION_METADATA.id,
 			timestamp: new Date(startTime).toISOString(),
